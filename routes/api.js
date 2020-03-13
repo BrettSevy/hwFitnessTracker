@@ -3,28 +3,49 @@ const mongoose = require("mongoose");
 
 module.exports = function (app) {
 
+    app.get("/api/workouts", (req, res) => {
+        db.Workout.find({})
+            .then(dbWorkout => {
+                res.json(dbWorkout);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    });
 
-    // db.Workout.create({ name: "" })
-    //     .then(dbWorkout => {
-    //         console.log(dbWorkout);
-    //     })
-    //     .catch(({ message }) => {
-    //         console.log(message);
-    //     });
+    app.post("/api/workouts", ({ body }, res) => {
+        db.Workout.create(body)
+            .then(dbWorkout => {
+                res.json(dbWorkout);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    });
 
-    // app.post("/submit", ({ body }, res) => {
-    //     db.Exercise.create(body)
-    //         .then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
-    //         .then(dbWorkout => {
-    //             res.json(dbWorkout);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    // });
+    app.put("/api/workouts/:id", (req, res) => {
+        console.log(req.body);
+        db.Workout.update({ _id: mongoose.mongo.ObjectId(req.params.id) }, { $push: { exercises: req.body } })
+            .then(dbWorkout => {
+                res.json(dbWorkout);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    });
+
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        })
+    });
 
 
-    // app.get("/exercise", (req, res) => {
+    // app.get("/api/exercise", (req, res) => {
     //     db.Exercise.find({})
     //         .then(dbExercise => {
     //             res.json(dbExercise);
@@ -34,25 +55,16 @@ module.exports = function (app) {
     //         });
     // });
 
-    app.get("/api/workouts", (req, res) => {
-        db.Workout.find({})
-            .then(dbWorkout => {
-                res.json(dbWorkout);
-            })
-            .catch(err => {
-              res.json(err);
-            });
-        });
 
 
-// app.get("/populated", (req, res) => {
-//     db.Workout.find({})
-//         .populate("exercises")
-//         .then(dbWorkout => {
-//             res.json(dbWorkout);
-//         })
-//         .catch(err => {
-//             res.json(err);
-//         });
-// });
+    // app.get("/populated", (req, res) => {
+    //     db.Workout.find({})
+    //         .populate("exercises")
+    //         .then(dbWorkout => {
+    //             res.json(dbWorkout);
+    //         })
+    //         .catch(err => {
+    //             res.json(err);
+    //         });
+    // });
 };
