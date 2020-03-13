@@ -8,20 +8,20 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
+// }
 
 app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 //Routes
 require("./routes/api.js")(app);
