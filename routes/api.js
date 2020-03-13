@@ -36,35 +36,13 @@ module.exports = function (app) {
 
     app.get("/api/workouts/range", (req, res) => {
         db.Workout.find({})
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            res.json(err);
-        })
+            .then(dbWorkout => {
+                res.json(dbWorkout);
+            })
+            .catch(err => {
+                res.json(err);
+            })
     });
 
 
-    // app.get("/api/exercise", (req, res) => {
-    //     db.Exercise.find({})
-    //         .then(dbExercise => {
-    //             res.json(dbExercise);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    // });
-
-
-
-    // app.get("/populated", (req, res) => {
-    //     db.Workout.find({})
-    //         .populate("exercises")
-    //         .then(dbWorkout => {
-    //             res.json(dbWorkout);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    // });
 };
