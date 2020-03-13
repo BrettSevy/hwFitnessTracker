@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require("../models/index");
 
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
@@ -145,3 +145,5 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
+
