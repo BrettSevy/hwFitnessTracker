@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 module.exports = function (app) {
 
     app.get("/api/workouts", (req, res) => {
-        db.workout.find({})
-            .then(dbworkout => {
-                res.json(dbworkout);
+        db.Workout.find({})
+            .then(dbWorkout => {
+                res.json(dbWorkout);
             })
             .catch(err => {
                 res.json(err);
@@ -14,9 +14,9 @@ module.exports = function (app) {
     });
 
     app.post("/api/workouts", ({ body }, res) => {
-        db.workout.create(body)
-            .then(dbworkout => {
-                res.json(dbworkout);
+        db.Workout.create(body)
+            .then(dbWorkout => {
+                res.json(dbWorkout);
             })
             .catch(err => {
                 res.json(err);
@@ -25,9 +25,9 @@ module.exports = function (app) {
 
     app.put("/api/workouts/:id", (req, res) => {
         console.log(req.body);
-        db.workout.update({ _id: mongoose.mongo.ObjectId(req.params.id) }, { $push: { exercises: req.body } })
-            .then(dbworkout => {
-                res.json(dbworkout);
+        db.Workout.update({ _id: mongoose.mongo.ObjectId(req.params.id) }, { $push: { exercises: req.body } })
+            .then(dbWorkout => {
+                res.json(dbWorkout);
             })
             .catch(err => {
                 res.json(err);
@@ -35,9 +35,9 @@ module.exports = function (app) {
     });
 
     app.get("/api/workouts/range", (req, res) => {
-        db.workout.find({})
-            .then(dbworkout => {
-                res.json(dbworkout);
+        db.Workout.find({})
+            .then(dbWorkout => {
+                res.json(dbWorkout);
             })
             .catch(err => {
                 res.json(err);
