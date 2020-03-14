@@ -4,16 +4,23 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color:black
+
+  
+ 
 }
 
 html,
 body,
 .wrapper {
   height: 100%;
+ 
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  
 }
 
 nav {
@@ -96,14 +103,15 @@ input {
 }
 
 .wrapper {
-  background-color: #f2f8ff;
   padding-bottom: 100px;
+  color: white;
 }
 
 .card.m-auto,
 .m-auto {
   margin: 0 auto;
   width: 500px;
+  
 }
 
 form .workout-type,
@@ -136,6 +144,8 @@ form::after {
 .exercise .ui.card {
   width: 400px;
   max-width: 600px;
+ 
+
 }
 
 .exercise .buttons {
@@ -382,10 +392,12 @@ form > button {
 
 .mt {
   margin-top: 20px;
+  
 }
 
 .workout .ui.card {
   padding-top: 25px;
+
 }
 
 .prev-workout {
@@ -405,6 +417,7 @@ form > button {
 
 .ui.card h2 {
   padding: 10px;
+ 
 }
 
 .buttons .ui.button:first-child {
