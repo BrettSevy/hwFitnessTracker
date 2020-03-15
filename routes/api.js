@@ -13,6 +13,17 @@ module.exports = function (app) {
             });
     });
 
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.find({})
+        .then(dbWorkout => {
+            const workoutWeek = (dbWorkout.length > 7 ? dbWorkout.slice(dbWorkout.length-7,dbWorkout.length) : dbWorkout);
+            res.json(workoutWeek);
+        })
+        .catch(err => {
+            res.json(err);
+        })
+    });
+    
     app.post("/api/workouts", ({ body }, res) => {
         db.Workout.create(body)
             .then(dbWorkout => {
@@ -33,16 +44,6 @@ module.exports = function (app) {
             });
     });
 
-    app.get("/api/workouts/range", (req, res) => {
-        db.Workout.find({})
-        .then(dbWorkout => {
-            const workoutWeek = (dbWorkout.length > 7 ? dbWorkout.slice(dbWorkout.length-7,dbWorkout.length) : dbWorkout);
-            res.json(workoutWeek);
-        })
-        .catch(err => {
-            res.json(err);
-        })
-    });
 };
 
 
