@@ -1,4 +1,4 @@
-# Eat-Da-Burgers
+# Fitness Tracker
 <h4 align="center">Node, Mongoose, Express</h4>
 
 ![burger](public/assets/fitness.png)
